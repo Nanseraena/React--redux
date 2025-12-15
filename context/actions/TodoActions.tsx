@@ -11,3 +11,10 @@ export const REMOVE_FROM_LIST = (id: any) => {
     payLoad: { id },
   };
 };
+
+export const SET_TODOS = (todos: any[]) => {
+  return {
+    type: "SET_TODOS",
+    payLoad: { todos },
+  };
+};

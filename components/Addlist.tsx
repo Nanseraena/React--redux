@@ -10,9 +10,25 @@ const AddToList = () => {
 
   const dispatch = useDispatch();
 
-  const handleClick = () => {
-    dispatch(ADD_TO_LIST(value));
-    setValue("");
+  const handleClick = async () => {
+    if (!value.trim()) return;
+    try {
+      const response = await fetch("http://127.0.0.1:8000/api/todos/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ item: value }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        dispatch(ADD_TO_LIST(data));
+        setValue("");
+      }
+    } catch (error) {
+      console.error("Error adding todo:", error);
+    }
   };
 
   return (
