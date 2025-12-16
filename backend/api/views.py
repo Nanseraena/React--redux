@@ -25,3 +25,12 @@ def todo_detail(request, pk):
     
     todo.delete()
     return Response(status=204)
+
+@api_view(['GET'])
+def dashboard_stats(request):
+    data = {
+        'users': 1234,
+        'sessions': 567,
+        'revenue': 12450
+    }
+    return Response(data)

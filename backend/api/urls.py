@@ -4,4 +4,5 @@ from . import views
 urlpatterns = [
     path('todos/', views.todo_list),
     path('todos/<int:pk>/', views.todo_detail),
+    path('dashboard-stats/', views.dashboard_stats),
 ]
